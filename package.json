@@ -1,0 +1,37 @@
+{
+  "name": "skyfeed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio"
+  },
+  "keywords": [
+    "aviation",
+    "news",
+    "rss",
+    "aggregator"
+  ],
+  "author": "SkyFeed",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^7.9.1",
+    "@types/node": "^26.1.2",
+    "axios": "^1.19.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.11.0",
+    "fastify-cors": "^6.0.3",
+    "node-cron": "^4.6.0",
+    "prisma": "^7.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2",
+    "xml2js": "^0.6.2"
+  }
+}

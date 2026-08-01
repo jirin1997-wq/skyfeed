@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model RSSSource {
+  id        Int     @id @default(autoincrement())
+  url       String  @unique
+  title     String
+  category  String
+  active    Boolean @default(true)
+  lastFetch DateTime?
+  
+  articles  Article[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Article {
+  id          Int     @id @default(autoincrement())
+  title       String
+  content     String  @db.Text
+  link        String  @unique
+  author      String?
+  imageUrl    String?
+  
+  source      RSSSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  sourceId    Int
+  
+  category    String
+  published   DateTime
+  fetched     DateTime @default(now())
+  featured    Boolean @default(false)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([published])
+  @@index([category])
+  @@index([sourceId])
+}
