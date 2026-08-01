@@ -47,3 +47,66 @@ model Article {
   @@index([category])
   @@index([sourceId])
 }
+
+model Airport {
+  id        Int     @id @default(autoincrement())
+  icao      String  @unique
+  iata      String?
+  name      String
+  city      String
+  country   String
+  latitude  Float
+  longitude Float
+  elevation Int?
+  website   String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([country])
+  @@index([name])
+}
+
+model ResourceLink {
+  id          Int     @id @default(autoincrement())
+  title       String
+  url         String  @unique
+  description String  @db.Text
+  category    String  // "flying", "schools", "shops", "tools", "communities"
+  icon        String? // emoji or icon name
+  featured    Boolean @default(false)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([category])
+  @@index([featured])
+}
+
+model Advertisement {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String  @db.Text
+  imageUrl    String?
+  link        String
+  category    String  // "aircraft", "services", "products", "events"
+  
+  authorName  String
+  authorEmail String
+  authorPhone String?
+  
+  startDate   DateTime
+  endDate     DateTime
+  active      Boolean @default(true)
+  approved    Boolean @default(false)
+  
+  impressions Int @default(0)
+  clicks      Int @default(0)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([active])
+  @@index([approved])
+  @@index([category])
+}

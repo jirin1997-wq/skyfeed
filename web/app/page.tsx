@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { Loader2, Search } from 'lucide-react';
+import { Loader2, Search, MapPin, Zap, ShoppingCart } from 'lucide-react';
 import ArticleCard from './components/ArticleCard';
 
 interface Article {
@@ -214,6 +215,54 @@ export default function Home() {
           </>
         )}
       </main>
+
+      {/* Quick Links Section */}
+      <section className="max-w-7xl mx-auto px-4 py-16 border-t border-slate-700/50">
+        <h2 className="text-3xl font-bold text-white mb-8">More from SkyFeed</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Airports Card */}
+          <Link href="/airports" className="group bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 hover:border-blue-400 rounded-lg p-6 transition">
+            <div className="flex items-center gap-3 mb-4">
+              <MapPin className="w-8 h-8 text-blue-400" />
+              <h3 className="text-xl font-bold text-white">Airport Directory</h3>
+            </div>
+            <p className="text-slate-400 text-sm mb-4">
+              Find general aviation airports across Europe. Browse ICAO codes, elevations, and facilities.
+            </p>
+            <span className="text-blue-400 hover:text-blue-300 font-medium text-sm">
+              Explore Airports →
+            </span>
+          </Link>
+
+          {/* Resources Card */}
+          <Link href="/resources" className="group bg-gradient-to-br from-cyan-500/10 to-green-500/10 border border-cyan-500/30 hover:border-cyan-400 rounded-lg p-6 transition">
+            <div className="flex items-center gap-3 mb-4">
+              <Zap className="w-8 h-8 text-cyan-400" />
+              <h3 className="text-xl font-bold text-white">Resources</h3>
+            </div>
+            <p className="text-slate-400 text-sm mb-4">
+              Essential tools and links for pilots. Weather, flight planning, training, and more.
+            </p>
+            <span className="text-cyan-400 hover:text-cyan-300 font-medium text-sm">
+              View Resources →
+            </span>
+          </Link>
+
+          {/* Marketplace Card */}
+          <Link href="/marketplace" className="group bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-500/30 hover:border-green-400 rounded-lg p-6 transition">
+            <div className="flex items-center gap-3 mb-4">
+              <ShoppingCart className="w-8 h-8 text-green-400" />
+              <h3 className="text-xl font-bold text-white">Marketplace</h3>
+            </div>
+            <p className="text-slate-400 text-sm mb-4">
+              Buy and sell aircraft, services, and products. Post free advertisements for the community.
+            </p>
+            <span className="text-green-400 hover:text-green-300 font-medium text-sm">
+              Browse Marketplace →
+            </span>
+          </Link>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-slate-900/50 border-t border-slate-700/50 mt-12">
