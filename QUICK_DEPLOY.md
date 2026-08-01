@@ -399,3 +399,23 @@ Co dál:
 - Tvořit vlastní obsah
 
 Potřebueš help? Řekni co chceš dělat! 👇
+
+---
+
+## 🌱 DATABASE SEEDING
+
+Po vytvoření databáze, spusť seed script aby se vytvořily letiště a linky:
+
+```bash
+# Lokálně
+npm run prisma:seed
+
+# Nebo na Railway - přidej seed script do deployment:
+DATABASE_URL=... npm run prisma:seed
+```
+
+Seed vytvoří:
+- ✈️ 10+ evropských letišť (Praha, Brno, Frankfurt, Paříž...)
+- 🔗 15+ důležitých leteckých webů
+- 📚 Linky na letecké školení, produkty, komunity
+

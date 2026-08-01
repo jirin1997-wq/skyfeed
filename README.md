@@ -1,239 +1,140 @@
-# SkyFeed - Aviation News Aggregator
+# ✈️ SkyFeed - Aviation News Hub
 
-Real-time aviation news aggregated from trusted sources worldwide.
+The modern, comprehensive platform for aviation enthusiasts. Real-time news, airport directory, essential resources, and community marketplace.
 
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Node Version](https://img.shields.io/badge/node-18%2B-green)
-![Next.js](https://img.shields.io/badge/next.js-14%2B-black)
+## 🎯 Features
 
-## 🌟 Features
+### 📰 News Hub
+- **Real-time RSS Aggregation**: 8 curated aviation news sources
+- **Smart Categorization**: News, Safety, Regulations
+- **Full-Text Search**: Find articles by keywords
+- **Category Filtering**: Browse by topic
+- **Mobile Responsive**: Works on all devices
+- **Auto-updates**: New content every 4 hours
 
-- 🔄 **Automatic RSS Aggregation** - Fetches news every 4 hours from 8+ sources
-- 📰 **Modern UI** - Beautiful, responsive dark-mode interface
-- 🏷️ **Category Filtering** - Organize by News, Safety, Regulations
-- 🔍 **Full-Text Search** - Find articles quickly
-- ⚡ **Fast & Scalable** - Built with Next.js + Fastify + PostgreSQL
-- 📱 **Mobile Ready** - Works perfect on all devices
-- 🌐 **SEO Optimized** - Proper metadata and structured data
+### 🗺️ Airport Directory
+- **Interactive Leaflet Map**: Explore 10+ European airports
+- **Detailed Information**: ICAO, IATA, elevation, websites
+- **Country Filtering**: Browse by region
+- **Airport Cards**: Quick info view
+- **GeoJSON API**: For custom integrations
 
-## 📦 Project Structure
+### 🔗 Essential Resources
+- **Curated Links**: 15+ aviation tools and websites
+- **Category Organization**: Flying, Training, Products, Tools, Communities
+- **Featured Resources**: Top recommendations
+- **External Links**: Direct access to tools
+
+### 📢 Marketplace
+- **User Advertisements**: Post for free
+- **Categories**: Aircraft Sales, Services, Products, Events
+- **Moderation System**: Admin approval workflow
+- **Click/Impression Tracking**: Analytics
+- **Date-Based Display**: Automatic expiration
+
+### 👨‍💼 Admin Panel
+- **Moderation Dashboard**: Review pending ads
+- **Approval/Rejection**: Manage submissions
+- **Statistics**: Track active listings
+- **Analytics**: Impressions and clicks
+
+## 🏗️ Tech Stack
+
+- **Frontend**: Next.js 14 + React 19 + TypeScript
+- **Styling**: TailwindCSS
+- **Backend**: Node.js + Fastify
+- **Database**: PostgreSQL + Prisma ORM
+- **Maps**: Leaflet.js
+- **State**: React Query
+- **Hosting**: Railway (Backend), Vercel (Frontend), Supabase (Database)
+
+## 🚀 Live Demo
+
+- Frontend: https://skyfeed-web.vercel.app
+- API: https://skyfeed-api-xxx.railway.app
+- GitHub: https://github.com/jirin1997-wq/skyfeed
+
+## 📡 API Endpoints
 
 ```
-skyfeed/
-├── src/                          # Backend (Node.js + Fastify)
-│   ├── config/                   # RSS sources configuration
-│   ├── services/                 # Business logic (aggregator)
-│   ├── routes/                   # API endpoints
-│   ├── server.ts                 # Main server file
-│   └── scheduler.ts              # Cron scheduler
-├── web/                          # Frontend (Next.js)
-│   ├── app/                      # Pages & components
-│   ├── components/               # React components
-│   └── public/                   # Static files
-├── prisma/                       # Database schema
-├── DEPLOYMENT.md                 # Deployment guide
-└── README.md                     # This file
+News:
+GET /api/articles - List articles
+GET /api/categories - Categories
+
+Airports:
+GET /api/airports - All airports
+GET /api/airports/:icao - Airport details
+GET /api/airports/map/geojson - Map data
+
+Resources:
+GET /api/links - All links
+GET /api/links/featured - Featured links
+
+Marketplace:
+GET /api/ads - Active ads
+POST /api/ads - Submit ad
+POST /api/ads/:id/click - Track click
+
+Admin:
+GET /api/admin/ads/pending - Pending ads
+POST /api/admin/ads/:id/approve - Approve
+POST /api/admin/ads/:id/reject - Reject
 ```
 
-## 🚀 Quick Start (Local Development)
-
-### Prerequisites
-- Node.js 18+
-- PostgreSQL (or Supabase)
-
-### Installation
+## 🛠️ Local Development
 
 ```bash
-# Clone repository
-git clone https://github.com/jirin1997-wq/skyfeed.git
-cd skyfeed
+# Setup
+docker-compose up
 
-# Install backend dependencies
+# In new terminal
 npm install
+npm run prisma:seed
 
-# Setup database
-cp .env.example .env
-# Edit .env with your PostgreSQL connection string
-
-# Initialize database
-npm run prisma:push
-
-# Start backend (Terminal 1)
-npm run dev
-
-# In another terminal, start frontend
-cd web
-npm install
+# Dev
 npm run dev
 ```
 
 Backend: http://localhost:3001
 Frontend: http://localhost:3000
 
-## 📡 API Endpoints
-
-### Articles
-```
-GET /api/articles
-  ?limit=20&page=1&category=News&search=pilot
-
-GET /api/articles/:id
-
-GET /api/categories
-
-GET /api/sources
-
-GET /api/stats
-```
-
-### Health
-```
-GET /health
-```
-
-## 🌐 Live Demo
-
-> 🚀 Coming soon! Follow deployment guide below.
-
-## 📖 Deployment
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete step-by-step guide to deploy on:
-- **Database**: Supabase (free)
-- **Backend**: Railway (free tier)
-- **Frontend**: Vercel (free)
-
-**Total deployment cost**: $0/month (free tier)
-
-## 📰 RSS Sources
-
-Currently aggregating from:
-- Aviation Safety Network
-- AVweb
-- General Aviation News
-- AOPA
-- Flight Global
-- AIN Online
-- FAA News
-- EASA
-
-Add more in `src/config/rss-sources.ts`
-
-## 🔧 Tech Stack
-
-### Backend
-- Node.js + TypeScript
-- Fastify (web framework)
-- Prisma (ORM)
-- PostgreSQL (database)
-- node-cron (scheduling)
-- xml2js (RSS parsing)
-
-### Frontend
-- Next.js 14
-- React 19
-- TailwindCSS
-- React Query (data fetching)
-- TypeScript
-
-### DevOps
-- Docker (containerization)
-- Railway (deployment)
-- Vercel (frontend hosting)
-- Supabase (database)
-
-## 📊 Architecture
+## 📝 Environment Variables
 
 ```
-┌─────────────────────────────┐
-│      Frontend (Vercel)      │
-│   SkyFeed Web Interface     │
-└────────────┬────────────────┘
-             │ HTTP/REST
-┌────────────▼────────────────┐
-│   Backend API (Railway)     │
-│  Fastify Server + RSS       │
-│  Aggregator + Scheduler     │
-└────────────┬────────────────┘
-             │ SQL
-┌────────────▼────────────────┐
-│ Database (Supabase)         │
-│    PostgreSQL + Prisma      │
-└─────────────────────────────┘
-```
-
-## ⚙️ Aggregation Schedule
-
-- **Automatic runs**: Every 4 hours
-- **Initial run**: 5 seconds after server start
-- **Error handling**: Automatic retry with exponential backoff
-- **Deduplication**: Prevents duplicate articles
-
-## 🛡️ Security
-
-- Environment variables for sensitive data
-- CORS protection on API
-- SQL injection prevention (Prisma)
-- XSS protection (React)
-- HTTPS enforcement (production)
-
-## 📈 Performance
-
-- **Frontend**: Optimized Next.js with ISR
-- **API**: Response caching (5 minute stale time)
-- **Database**: Indexed queries on common fields
-- **Aggregator**: Parallel feed fetching
-- **Assets**: Minified CSS/JS
-
-## 🔐 Environment Variables
-
-Backend:
-```
+# .env (Backend)
 DATABASE_URL=postgresql://...
 PORT=3001
 NODE_ENV=production
-FRONTEND_URL=https://skyfeed.app
+FRONTEND_URL=https://...
+
+# .env.local (Frontend)
+NEXT_PUBLIC_API_URL=https://...
 ```
 
-Frontend:
-```
-NEXT_PUBLIC_API_URL=https://api.skyfeed.app
-```
+## 📚 Documentation
 
-## 🤝 Contributing
+- [Quick Deploy Guide](./QUICK_DEPLOY.md)
+- [Deployment Instructions](./DEPLOYMENT.md)
+- [Start Here](./START_HERE.md)
 
-Contributions welcome! Please:
-1. Fork the repo
-2. Create feature branch (`git checkout -b feature/amazing`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing`)
-5. Open Pull Request
+## 🎯 Features in Development
 
-## 📝 Roadmap
+- User authentication
+- Comments & reviews
+- Newsletter
+- Mobile app
+- Video content
+- User profiles
+- Flight tracking
 
-- [ ] Admin dashboard for RSS source management
-- [ ] Newsletter subscription
-- [ ] Article bookmarking/saving
-- [ ] Advanced search with filters
-- [ ] Social sharing buttons
-- [ ] Dark/light mode toggle
-- [ ] Mobile app (React Native)
-- [ ] AI-powered summarization
-- [ ] Trending articles algorithm
+## 📝 License
 
-## 📄 License
+Open source - Use freely
 
-MIT License - see LICENSE file for details
+## 📞 Support
 
-## 👨‍💻 Author
-
-Built by SkyFeed Team
-
-## 📞 Contact & Support
-
-- **Issues**: GitHub Issues
-- **Email**: support@skyfeed.app
-- **Twitter**: @skyfeedapp
+GitHub Issues & Discussions for support
 
 ---
 
-**Made with ✈️ for aviation enthusiasts worldwide**
+**SkyFeed** - Where Aviation Meets Community ✈️
