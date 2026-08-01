@@ -1,0 +1,28 @@
+name: Deploy SkyFeed
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: 🎯 Deployment Ready
+        run: |
+          echo "🚀 SkyFeed is ready to deploy!"
+          echo ""
+          echo "Connected services will auto-deploy:"
+          echo "✅ Railway (Backend) - Connected via GitHub"
+          echo "✅ Vercel (Frontend) - Connected via GitHub"
+          echo "✅ Supabase (Database) - Configuration needed"
+          echo ""
+          echo "Next steps:"
+          echo "1. Push any changes to main branch"
+          echo "2. Railway auto-deploys backend"
+          echo "3. Vercel auto-deploys frontend"
+          echo ""
+          echo "To complete setup, follow: DEPLOYMENT.md"
