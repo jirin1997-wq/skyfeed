@@ -1,0 +1,196 @@
+================================================================================
+                      🚀 SKYFEED - LAUNCH CHECKLIST
+================================================================================
+
+STATUS: ✅ ALL FEATURES BUILT & READY TO DEPLOY
+
+Your complete aviation news & services portal is ready!
+
+================================================================================
+                              📍 YOUR REPO
+================================================================================
+
+GitHub: https://github.com/jirin1997-wq/skyfeed
+
+All code pushed ✅
+All documentation ready ✅
+All features implemented ✅
+
+================================================================================
+                         🎯 DEPLOYMENT INSTRUCTIONS
+================================================================================
+
+👉 FOLLOW THIS FILE: DEPLOY_NOW.md
+
+It's 3 simple steps (15 minutes total):
+
+  1️⃣  Create Supabase Database (2 min)
+       → Go to supabase.com
+       → Create project
+       → Get connection string
+
+  2️⃣  Deploy Backend on Railway (5 min)
+       → Go to railway.app
+       → Connect GitHub repo
+       → Add database connection
+       → Get backend URL
+
+  3️⃣  Deploy Frontend on Vercel (5 min)
+       → Go to vercel.com
+       → Import GitHub repo
+       → Add environment variable (backend URL)
+       → Deploy!
+
+================================================================================
+                            📚 DOCUMENTATION
+================================================================================
+
+Start Here (Choose ONE):
+
+├─ 🟢 QUICK (15 min)
+│   └─ DEPLOY_NOW.md ............ 3-step deployment guide
+│
+├─ 🟡 DETAILED (30 min)
+│   └─ DEPLOYMENT_GUIDE.md ...... Complete setup with screenshots
+│
+├─ 🟡 OVERVIEW
+│   └─ README.md ................ Features, architecture, endpoints
+│
+└─ 🟢 CODE
+    └─ GitHub repo ............. Full source code
+
+================================================================================
+                           ✨ FEATURES INCLUDED
+================================================================================
+
+✅ Aviation News Feed
+   - Real-time RSS aggregation (8+ sources)
+   - Auto-refresh every 4 hours
+   - Search & category filtering
+   - Responsive design
+
+✅ Airport Directory
+   - 10+ European airports
+   - Interactive Leaflet.js map
+   - Website links for each airport
+   - Search by country/city
+
+✅ Aircraft Rentals  ← NEW!
+   - 5+ rental companies
+   - Aircraft types listed
+   - Website & phone links
+   - GeoJSON map with markers
+
+✅ Flight Schools      ← NEW!
+   - 6+ flight training organizations
+   - Certifications offered (PPL, CPL, ATPL)
+   - Website links
+   - Location-based search
+   - Interactive map
+
+✅ Resource Library
+   - 14+ curated links
+   - Organized by category
+   - Direct links to tools & communities
+
+✅ Marketplace
+   - User ad submissions
+   - Admin approval workflow
+   - Category browsing
+   - Click tracking
+
+================================================================================
+                         🗺️ MAP FEATURES (COMPLETE)
+================================================================================
+
+✅ Airports Page
+   - Blue markers on interactive map
+   - Click marker → see airport info + WEBSITE LINK
+   - Card view with ICAO/IATA codes
+   - Elevation & facilities
+
+✅ Rentals Page
+   - Blue markers for rental companies
+   - Click marker → company details + WEBSITE LINK
+   - Card view with aircraft types
+   - Phone & email contact info
+
+✅ Schools Page
+   - Green markers for flight schools
+   - Click marker → school details + WEBSITE LINK
+   - Card view with certifications
+   - Country/city filtering
+
+All maps are fully functional with:
+- Drag & zoom
+- Multiple marker types
+- Popup info windows
+- Direct website links
+
+================================================================================
+                         🛠️ TECHNOLOGY STACK
+================================================================================
+
+Frontend:  Next.js 14 + React + TypeScript + TailwindCSS + Leaflet.js
+Backend:   Node.js + Fastify + TypeScript
+Database:  PostgreSQL (Supabase)
+Maps:      Leaflet.js + OpenStreetMap
+Hosting:   Vercel (frontend) + Railway (backend)
+
+================================================================================
+                        💰 COST (Monthly Estimate)
+================================================================================
+
+Supabase (DB):  $0-25  (free first 500MB)
+Railway (API):  $0-15  (usage-based, usually ~$5)
+Vercel (FE):    $0-20  (free generous tier)
+________________
+Total:          ~$0-60/month (probably $0-10 for first year!)
+
+All services have free tiers that easily handle thousands of users.
+
+================================================================================
+                          🎯 NEXT ACTIONS
+================================================================================
+
+1. Read: DEPLOY_NOW.md (this repo)
+2. Create: Supabase account (2 min)
+3. Deploy: Backend on Railway (5 min)
+4. Deploy: Frontend on Vercel (5 min)
+5. Test: Visit your live URL
+6. Share: Send frontend URL to others!
+
+That's it! ✅
+
+================================================================================
+                         📞 QUICK TROUBLESHOOTING
+================================================================================
+
+❌ Frontend shows "API Error"
+✅ Check Vercel env var NEXT_PUBLIC_API_URL is set correctly
+
+❌ No articles appearing
+✅ Backend might be starting - wait 1-2 minutes, then refresh
+
+❌ Maps not loading
+✅ Clear browser cache (Ctrl+Shift+Delete)
+
+❌ Website links don't work
+✅ Make sure you're clicking on the marker popup or "Visit Website" button
+
+For more help → See DEPLOYMENT_GUIDE.md
+
+================================================================================
+                         ✈️ YOU'RE ALL SET!
+================================================================================
+
+Everything is built, tested, and ready to deploy.
+
+Just follow DEPLOY_NOW.md and you'll be live in 15 minutes!
+
+Questions? Check:
+- DEPLOYMENT_GUIDE.md (detailed setup)
+- README.md (features & architecture)
+- GitHub Issues (https://github.com/jirin1997-wq/skyfeed/issues)
+
+🚀 Good luck!
