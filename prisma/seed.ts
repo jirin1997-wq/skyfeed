@@ -9,6 +9,8 @@ async function main() {
   await prisma.airport.deleteMany();
   await prisma.resourceLink.deleteMany();
   await prisma.advertisement.deleteMany();
+  await prisma.aircraftRental.deleteMany();
+  await prisma.flightSchool.deleteMany();
 
   // Seed Airports (Czech & EU General Aviation)
   const airports = await prisma.airport.createMany({
@@ -237,6 +239,164 @@ async function main() {
   });
 
   console.log(`✅ Created ${links.count} resource links`);
+
+  // Seed Aircraft Rentals
+  const rentals = await prisma.aircraftRental.createMany({
+    data: [
+      {
+        name: 'Brno Aero Club',
+        website: 'https://www.brno-aero.cz',
+        phone: '+420541212121',
+        email: 'info@brno-aero.cz',
+        description:
+          'General aviation rental and flight operations in Brno. Cessna and Piper aircraft available.',
+        city: 'Brno',
+        country: 'Czech Republic',
+        latitude: 49.1547,
+        longitude: 16.6969,
+        aircraftTypes: JSON.stringify(['Cessna 172', 'Piper PA-28', 'Diamond DA40']),
+      },
+      {
+        name: 'Prague Aviation',
+        website: 'https://www.prague-aviation.cz',
+        phone: '+420224411755',
+        email: 'booking@prague-aviation.cz',
+        description:
+          'Professional aircraft rental and charter services. Modern fleet, experienced pilots.',
+        city: 'Prague',
+        country: 'Czech Republic',
+        latitude: 50.1008,
+        longitude: 14.26,
+        aircraftTypes: JSON.stringify(['Cessna 172', 'Cessna 182', 'Piper Seneca']),
+      },
+      {
+        name: 'Podborany Flight Services',
+        website: 'https://www.podborany-flying.cz',
+        phone: '+420318664077',
+        email: 'info@podborany-flying.cz',
+        description: 'Flight training and aircraft rental at Podborany airfield.',
+        city: 'Podborany',
+        country: 'Czech Republic',
+        latitude: 50.2333,
+        longitude: 13.8333,
+        aircraftTypes: JSON.stringify(['Cessna 172', 'Grob 102']),
+      },
+      {
+        name: 'European Air Services',
+        website: 'https://www.europeanairservices.de',
+        phone: '+49189949000',
+        email: 'info@europeanairservices.de',
+        description: 'Leading aircraft rental company in Germany with multiple locations.',
+        city: 'Munich',
+        country: 'Germany',
+        latitude: 48.3536,
+        longitude: 11.7861,
+        aircraftTypes: JSON.stringify([
+          'Cessna 172',
+          'Piper PA-28',
+          'Diamond DA40',
+          'Cirrus SR22',
+        ]),
+      },
+      {
+        name: 'Aero France',
+        website: 'https://www.aero-france.fr',
+        phone: '+33140777755',
+        email: 'bookings@aero-france.fr',
+        description: 'Aircraft rental and flight school in Paris area.',
+        city: 'Paris',
+        country: 'France',
+        latitude: 48.8566,
+        longitude: 2.3522,
+        aircraftTypes: JSON.stringify(['Cessna 172', 'Piper PA-28', 'Tecnam P2006T']),
+      },
+    ],
+  });
+
+  console.log(`✅ Created ${rentals.count} aircraft rental companies`);
+
+  // Seed Flight Schools
+  const schools = await prisma.flightSchool.createMany({
+    data: [
+      {
+        name: 'Brno Flight Academy',
+        website: 'https://www.brno-flight-academy.cz',
+        phone: '+420541212121',
+        email: 'training@brno-flight-academy.cz',
+        description:
+          'Professional pilot training. PPL, CPL, and ATPL courses available.',
+        city: 'Brno',
+        country: 'Czech Republic',
+        latitude: 49.1547,
+        longitude: 16.6969,
+        certifications: JSON.stringify(['PPL', 'CPL', 'ATPL', 'Instrument Rating']),
+      },
+      {
+        name: 'Prague Pilot School',
+        website: 'https://www.prague-pilot-school.cz',
+        phone: '+420224411755',
+        email: 'info@prague-pilot-school.cz',
+        description:
+          'Learn to fly in Prague. From discovery flights to commercial license training.',
+        city: 'Prague',
+        country: 'Czech Republic',
+        latitude: 50.1008,
+        longitude: 14.26,
+        certifications: JSON.stringify(['PPL', 'CPL', 'Multi-Engine', 'Instrument']),
+      },
+      {
+        name: 'Podborany Flying Club School',
+        website: 'https://www.podborany-flying.cz/school',
+        phone: '+420318664077',
+        email: 'school@podborany-flying.cz',
+        description: 'Recreational and professional pilot training.',
+        city: 'Podborany',
+        country: 'Czech Republic',
+        latitude: 50.2333,
+        longitude: 13.8333,
+        certifications: JSON.stringify(['PPL', 'Recreational', 'Private Pilot']),
+      },
+      {
+        name: 'Luftfahrtschule München',
+        website: 'https://www.luftfahrtschule-muenchen.de',
+        phone: '+49189949222',
+        email: 'info@luftfahrtschule-muenchen.de',
+        description:
+          'Professional flight training in Bavaria. EASA approved training organization.',
+        city: 'Munich',
+        country: 'Germany',
+        latitude: 48.3536,
+        longitude: 11.7861,
+        certifications: JSON.stringify(['PPL', 'CPL', 'ATPL', 'Type Ratings']),
+      },
+      {
+        name: 'Ecole de Pilotage Île-de-France',
+        website: 'https://www.epif.fr',
+        phone: '+33140777755',
+        email: 'contact@epif.fr',
+        description: 'Comprehensive flight training near Paris.',
+        city: 'Paris',
+        country: 'France',
+        latitude: 48.8566,
+        longitude: 2.3522,
+        certifications: JSON.stringify(['PPL', 'CPL', 'Microlight', 'Ultralight']),
+      },
+      {
+        name: 'Nordic Flight School',
+        website: 'https://www.nordic-flight-school.se',
+        phone: '+46812345678',
+        email: 'info@nordic-flight-school.se',
+        description: 'Leading flight training organization in Scandinavia.',
+        city: 'Stockholm',
+        country: 'Sweden',
+        latitude: 59.3293,
+        longitude: 18.0686,
+        certifications: JSON.stringify(['PPL', 'CPL', 'ATPL', 'Commercial Ratings']),
+      },
+    ],
+  });
+
+  console.log(`✅ Created ${schools.count} flight schools`);
 
   console.log('✨ Database seeded successfully!');
 }

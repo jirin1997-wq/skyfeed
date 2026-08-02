@@ -110,3 +110,45 @@ model Advertisement {
   @@index([approved])
   @@index([category])
 }
+
+model AircraftRental {
+  id          Int     @id @default(autoincrement())
+  name        String
+  website     String
+  phone       String?
+  email       String?
+  description String  @db.Text
+  city        String
+  country     String
+  latitude    Float?
+  longitude   Float?
+  
+  aircraftTypes String? // JSON array of types
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([country])
+  @@index([city])
+}
+
+model FlightSchool {
+  id          Int     @id @default(autoincrement())
+  name        String
+  website     String
+  phone       String?
+  email       String?
+  description String  @db.Text
+  city        String
+  country     String
+  latitude    Float?
+  longitude   Float?
+  
+  certifications String? // JSON array of certifications
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([country])
+  @@index([city])
+}
