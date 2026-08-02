@@ -7,6 +7,7 @@ import { airportRoutes } from './routes/airports';
 import { linksRoutes } from './routes/links';
 import { adsRoutes } from './routes/ads';
 import { rentalRoutes, schoolRoutes } from './routes/rentals-schools';
+import { adminRoutes } from './routes/admin';
 import { adminAdsRoutes } from './routes/admin-ads';
 
 const app = Fastify({
@@ -26,6 +27,7 @@ app.register(linksRoutes, { prefix: '/api' });
 app.register(adsRoutes, { prefix: '/api' });
 app.register(rentalRoutes, { prefix: '/api' });
 app.register(schoolRoutes, { prefix: '/api' });
+app.register(adminRoutes, { prefix: '/api' });
 app.register(adminAdsRoutes, { prefix: '/api' });
 
 // Health check

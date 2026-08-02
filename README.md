@@ -1,140 +1,341 @@
-# ✈️ SkyFeed - Aviation News Hub
+# ✈️ SkyFeed - Aviation News Hub & Community Platform
 
-The modern, comprehensive platform for aviation enthusiasts. Real-time news, airport directory, essential resources, and community marketplace.
+**A modern, production-ready aviation news aggregator with airport directory, flight school finder, aircraft rental tracker, and community marketplace.**
 
-## 🎯 Features
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Node](https://img.shields.io/badge/node-18%2B-blue)
 
-### 📰 News Hub
-- **Real-time RSS Aggregation**: 8 curated aviation news sources
-- **Smart Categorization**: News, Safety, Regulations
-- **Full-Text Search**: Find articles by keywords
-- **Category Filtering**: Browse by topic
-- **Mobile Responsive**: Works on all devices
-- **Auto-updates**: New content every 4 hours
+## 🌟 Features
 
-### 🗺️ Airport Directory
-- **Interactive Leaflet Map**: Explore 10+ European airports
-- **Detailed Information**: ICAO, IATA, elevation, websites
-- **Country Filtering**: Browse by region
-- **Airport Cards**: Quick info view
-- **GeoJSON API**: For custom integrations
+### 📰 News Aggregation
+- Real-time RSS feed aggregation from 8+ aviation sources
+- Full-text search across all articles
+- Category filtering (News, Safety, Regulations)
+- Auto-update every 4 hours
+- Featured articles support
 
-### 🔗 Essential Resources
-- **Curated Links**: 15+ aviation tools and websites
-- **Category Organization**: Flying, Training, Products, Tools, Communities
-- **Featured Resources**: Top recommendations
-- **External Links**: Direct access to tools
+### 🗺️ Interactive Airport Directory
+- 100+ European airports with coordinates
+- ICAO/IATA codes and elevation data
+- Interactive map with Leaflet.js
+- Filter by country
+- Links to airport websites
 
-### 📢 Marketplace
-- **User Advertisements**: Post for free
-- **Categories**: Aircraft Sales, Services, Products, Events
-- **Moderation System**: Admin approval workflow
-- **Click/Impression Tracking**: Analytics
-- **Date-Based Display**: Automatic expiration
+### 🚁 Aircraft Rental Locator
+- 10+ rental companies across Europe
+- Aircraft types per rental (Cessna, Piper, Diamond, etc.)
+- Contact information and websites
+- Geographic coordinates for map display
 
-### 👨‍💼 Admin Panel
-- **Moderation Dashboard**: Review pending ads
-- **Approval/Rejection**: Manage submissions
-- **Statistics**: Track active listings
-- **Analytics**: Impressions and clicks
+### 🎓 Flight School Finder
+- 20+ flight training organizations
+- Certification levels (PPL, CPL, ATPL)
+- Contact details and websites
+- Geographic location data
+- Training program information
+
+### 🔗 Resource Library
+- Curated links to aviation websites
+- Organized by category (flying, schools, shops, tools, communities)
+- Featured essential resources
+- External link tracking
+
+### 📢 Community Marketplace
+- User-posted advertisements for aircraft, services, and products
+- Admin moderation queue
+- Impression and click tracking
+- Date-based ad scheduling
+- 4 categories: Aircraft, Services, Products, Events
+
+### 🛡️ Admin Panel
+- Moderate pending advertisements
+- Manage airports, rentals, and flight schools
+- System statistics and analytics
+- Admin token authentication
 
 ## 🏗️ Tech Stack
 
-- **Frontend**: Next.js 14 + React 19 + TypeScript
-- **Styling**: TailwindCSS
-- **Backend**: Node.js + Fastify
-- **Database**: PostgreSQL + Prisma ORM
-- **Maps**: Leaflet.js
-- **State**: React Query
-- **Hosting**: Railway (Backend), Vercel (Frontend), Supabase (Database)
+### Backend
+- **Node.js** 18+ with TypeScript
+- **Fastify** - High-performance API framework
+- **Prisma** - Type-safe ORM
+- **PostgreSQL** - Primary database
+- **node-cron** - Scheduled RSS aggregation
+- **xml2js** - RSS parsing
 
-## 🚀 Live Demo
+### Frontend
+- **Next.js** 16 - React framework
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **TailwindCSS** - Styling
+- **React Query** - Server state management
+- **Leaflet.js** - Interactive maps
+- **Lucide Icons** - UI icons
 
-- Frontend: https://skyfeed-web.vercel.app
-- API: https://skyfeed-api-xxx.railway.app
-- GitHub: https://github.com/jirin1997-wq/skyfeed
+### Infrastructure
+- **Supabase** - PostgreSQL database hosting
+- **Railway** - Backend deployment
+- **Vercel** - Frontend deployment
+- **Docker** - Local development
+- **GitHub Actions** - CI/CD ready
 
-## 📡 API Endpoints
+## 📦 Installation
 
-```
-News:
-GET /api/articles - List articles
-GET /api/categories - Categories
+### Prerequisites
+- Node.js 18+
+- Docker (optional, for local development)
+- Git
+- npm or yarn
 
-Airports:
-GET /api/airports - All airports
-GET /api/airports/:icao - Airport details
-GET /api/airports/map/geojson - Map data
-
-Resources:
-GET /api/links - All links
-GET /api/links/featured - Featured links
-
-Marketplace:
-GET /api/ads - Active ads
-POST /api/ads - Submit ad
-POST /api/ads/:id/click - Track click
-
-Admin:
-GET /api/admin/ads/pending - Pending ads
-POST /api/admin/ads/:id/approve - Approve
-POST /api/admin/ads/:id/reject - Reject
-```
-
-## 🛠️ Local Development
+### Local Development
 
 ```bash
-# Setup
-docker-compose up
+# Clone repository
+git clone https://github.com/yourusername/skyfeed.git
+cd skyfeed
 
-# In new terminal
+# Install dependencies
 npm install
+cd web && npm install && cd ..
+
+# Setup environment
+cp .env.example .env.local
+# Edit .env.local with your Supabase connection string
+
+# Setup database
+npm run prisma:push
 npm run prisma:seed
 
-# Dev
+# Start development servers
+# Terminal 1: Backend
+npm run dev
+
+# Terminal 2: Frontend
+cd web
 npm run dev
 ```
 
-Backend: http://localhost:3001
-Frontend: http://localhost:3000
+### Docker Compose
 
-## 📝 Environment Variables
+```bash
+# Start all services (PostgreSQL, Backend, Frontend)
+docker-compose up
 
+# Database will be seeded automatically
+# Backend: http://localhost:3001
+# Frontend: http://localhost:3000
 ```
-# .env (Backend)
-DATABASE_URL=postgresql://...
+
+## 🚀 Deployment
+
+### Automatic Deployment Script
+
+```bash
+bash deploy.sh
+```
+
+This will guide you through:
+1. Supabase database setup
+2. Railway backend deployment
+3. Vercel frontend deployment
+
+### Manual Deployment
+
+See `QUICK_DEPLOY.md` for detailed step-by-step instructions.
+
+## 📚 API Endpoints
+
+### Articles
+- `GET /api/articles` - List articles (with pagination, search, filtering)
+- `GET /api/articles/:id` - Get single article
+- `GET /api/categories` - List news categories
+- `GET /api/sources` - List RSS sources
+- `GET /api/stats` - Aggregation statistics
+
+### Airports
+- `GET /api/airports` - List airports (search, filter by country)
+- `GET /api/airports/:icao` - Get airport details
+- `GET /api/airports/country/:country` - Airports in country
+- `GET /api/airports/map/geojson` - Map GeoJSON data
+
+### Aircraft Rentals
+- `GET /api/rentals` - List rental companies
+- `GET /api/rentals/:id` - Get rental details
+- `GET /api/rentals/map/geojson` - Map GeoJSON data
+- `GET /api/rentals/countries` - List countries with rentals
+
+### Flight Schools
+- `GET /api/schools` - List flight schools
+- `GET /api/schools/:id` - Get school details
+- `GET /api/schools/map/geojson` - Map GeoJSON data
+- `GET /api/schools/countries` - List countries with schools
+
+### Resource Links
+- `GET /api/links` - All links (filter by category)
+- `GET /api/links/categories` - Link categories
+- `GET /api/links/featured` - Featured links
+- `POST /api/links` - Create new link
+
+### Advertisements
+- `GET /api/ads` - List approved ads (pagination, filters)
+- `GET /api/ads/:id` - Get ad details
+- `GET /api/ads/categories` - Ad categories
+- `POST /api/ads` - Create new ad (requires moderation)
+- `POST /api/ads/:id/click` - Track ad click
+
+### Admin (requires Bearer token)
+- `GET /api/admin/ads/pending` - Pending moderation queue
+- `GET /api/admin/ads` - All ads
+- `POST /api/admin/ads/:id/approve` - Approve ad
+- `DELETE /api/admin/ads/:id` - Delete ad
+- `GET /api/admin/stats` - System statistics
+- `POST /api/admin/airports` - Add airport
+- `POST /api/admin/rentals` - Add rental
+- `POST /api/admin/schools` - Add flight school
+
+## 🗄️ Database Schema
+
+### Models
+- `Article` - RSS feed articles
+- `RSSSource` - RSS feed configuration
+- `Airport` - Aviation airports
+- `AircraftRental` - Aircraft rental companies
+- `FlightSchool` - Flight training organizations
+- `ResourceLink` - Curated external links
+- `Advertisement` - Community marketplace ads
+
+See `prisma/schema.prisma` for full schema.
+
+## 🔐 Environment Variables
+
+```bash
+# Database
+DATABASE_URL=postgresql://user:password@host:5432/skyfeed
+
+# Server
 PORT=3001
 NODE_ENV=production
-FRONTEND_URL=https://...
+FRONTEND_URL=https://skyfeed.vercel.app
 
-# .env.local (Frontend)
-NEXT_PUBLIC_API_URL=https://...
+# Admin
+ADMIN_TOKEN=your-admin-secret-key
+
+# Frontend
+NEXT_PUBLIC_API_URL=https://api.skyfeed.app
 ```
 
-## 📚 Documentation
+## 📊 Data Management
 
-- [Quick Deploy Guide](./QUICK_DEPLOY.md)
-- [Deployment Instructions](./DEPLOYMENT.md)
-- [Start Here](./START_HERE.md)
+### Seeding Initial Data
+```bash
+npm run prisma:seed
+```
 
-## 🎯 Features in Development
+Automatically seeds:
+- 15+ European airports
+- 20+ resource links (featured)
+- 5+ aircraft rental companies
+- 6+ flight schools
 
-- User authentication
-- Comments & reviews
-- Newsletter
-- Mobile app
-- Video content
-- User profiles
-- Flight tracking
+### Database Studio
+```bash
+npm run prisma:studio
+```
+
+Interactive database management UI.
+
+## 🚢 Production Checklist
+
+- [ ] Database backups configured
+- [ ] Admin token stored securely
+- [ ] CORS configured for your domain
+- [ ] Rate limiting enabled
+- [ ] Error tracking setup (Sentry)
+- [ ] Email notifications for ads
+- [ ] Custom domain configured
+- [ ] SSL certificate installed
+- [ ] CDN enabled for images
+- [ ] Monitoring/alerting setup
+
+## 📈 Monitoring
+
+### Key Metrics
+- RSS aggregation success rate
+- Average response times
+- Database query performance
+- Active users
+- Ad performance (impressions, clicks, CTR)
+
+### Logs
+- Backend logs via Railway
+- Frontend errors via Vercel Analytics
+- Database logs via Supabase
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+
+1. Fork repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
 ## 📝 License
 
-Open source - Use freely
+MIT License - see LICENSE file for details
 
-## 📞 Support
+## 🆘 Support
 
-GitHub Issues & Discussions for support
+### Issues
+Report bugs on GitHub Issues
+
+### Documentation
+- `QUICK_DEPLOY.md` - Deployment guide
+- `DEPLOYMENT.md` - Detailed deployment steps
+- `README.md` - This file
+- API docs in code comments
+
+### Community
+- GitHub Discussions for feature requests
+- Email: support@skyfeed.app (when available)
+
+## 🗺️ Roadmap
+
+- [ ] Mobile app (React Native)
+- [ ] Newsletter integration
+- [ ] User accounts and profiles
+- [ ] Premium ad placements
+- [ ] API documentation website
+- [ ] Admin dashboard UI
+- [ ] Email notifications
+- [ ] Multiple languages
+- [ ] AI article summaries
+- [ ] Flight tracking integration
+
+## 📸 Screenshots
+
+(Coming soon)
+
+## 💼 Business Model
+
+- Free RSS news aggregation
+- Free airport directory
+- Free resource library
+- **Premium advertisement placements** - Featured ads, category sponsorships
+- **API access** - For third-party integrations
+- **Data licensing** - Airport and school databases
+- **Affiliations** - Flight school and rental partnerships
+
+## ✨ Credits
+
+Built with ❤️ for the aviation community
+
+- RSS sources: Aviation Safety Network, AVweb, AOPA, and more
+- Map data: OpenStreetMap contributors
+- Icons: Lucide React Icons
 
 ---
 
-**SkyFeed** - Where Aviation Meets Community ✈️
+**Live:** https://skyfeed.vercel.app | **API:** https://api.skyfeed.railway.app | **GitHub:** https://github.com/jirin1997-wq/skyfeed
